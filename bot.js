@@ -7,7 +7,7 @@ Bot = (function Bot () {
     this.processMessage = processMessage
 
     Bot.prototype.processMessage = function(message, user){
-		return message;
-	});
-}
+		return message
+	}
+})
 

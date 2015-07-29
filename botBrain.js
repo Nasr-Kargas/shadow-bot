@@ -6,7 +6,7 @@ var BotBrain = (function(botName, slackSelf) {
 	this.botTalkingTo;
 
 	var wikipediaHTMLResult = function(data) {
-	    var readData = $('<div>' + data.parse.text.* + '</div>');
+	    var readData = $('<div>' + "poop" + '</div>');
 	    // handle redirects
 	    var redirect = readData.find('li:contains("REDIRECT") a').text();
 	    if(redirect != '') {

@@ -9,6 +9,7 @@ var BotBrain = (function(botName, slackSelf) {
 	this.botMaster = "@nasrkargas"; //hard coded to me for now.
 
 	var wikipediaHTMLResult = function(data) {
+		console.log("WIKILOOKUP");
 	    var readData = $('<div>' + data.parse.text + '</div>');
 	    // handle redirects
 	    var redirect = readData.find('li:contains("REDIRECT") a').text();

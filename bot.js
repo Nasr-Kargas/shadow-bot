@@ -4,8 +4,8 @@ var RalfBot = (function() {
     this.botCommandOne = this.botName + " please";
     this.botCommandTwo = this.botName;
     this.processMessage = processMessage;
-
-    RalfBot.prototype.processMessage = function(message, user){
+	
+	this.processMessage = function(message, user){
 		return message;
 	};
 });

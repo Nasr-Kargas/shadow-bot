@@ -5,8 +5,9 @@ Bot = (function Bot () {
     this.botCommandOne = this.botName + " please"
     this.botCommandTwo = this.botName
     this.processMessage = processMessage
+
+    Bot.prototype.processMessage = function(message, user){
+		return message;
+	});
 }
 
-Bot.prototype.processMessage = function(message, user){
-	return message;
-});

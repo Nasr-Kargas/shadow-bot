@@ -16,15 +16,15 @@ app.listen(app.get('port'), function() {
 
 // Slack Bot about to start.
 var Slack, autoMark, autoReconnect, slack, token, Responder;
-Responder = require('./response.js')
-RalfBot = require('./bot.js')
-Slack = require('slack-client')
-token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i'
-autoReconnect = true
-autoMark = true
+Responder = require('./response.js');
+RalfBot = require('./bot.js');
+Slack = require('slack-client');
+token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i';
+autoReconnect = true;
+autoMark = true;
 
-bot = new RalfBot()
-slack = new Slack(token, autoReconnect, autoMark)
+bot = new RalfBot();
+slack = new Slack(token, autoReconnect, autoMark);
 
 slack.on('open', function() {
   console.log('alive');

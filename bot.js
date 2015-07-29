@@ -40,9 +40,7 @@ var RalfBot = (function(slackself) {
 			//ask confirmation.
 			command = "turnOff";
 		}else if(~cmdTxt.indexOf("turn on") || ~cmdTxt.indexOf("come back") || ~cmdTxt.indexOf("where are you") || ~cmdTxt.indexOf("activate") || ~cmdTxt.indexOf("sleep")){
-			if(this.botState == "sleeping"){
-				command = "turnOn";
-			}
+			command = "turnOn";
 		}else if(~cmdTxt.indexOf("is") || ~cmdTxt.indexOf("know")){
 			if(~cmdTxt.indexOf("time")){
 				command = "tellTime";	

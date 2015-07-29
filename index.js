@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var botMaster = "@nasrkargas";
 var shouldTalk = true;
+var bot = Bot();
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -82,10 +83,10 @@ slack.on('message', function(message) {
 
   		responder = new Responder();
   		var response = responder.respondToMessage(message, userName, user, botMaster);
-
-  		if (response != null && shouldTalk) {
-  			channel.send(response);
-  			return console.log("@" + slack.self.name + " responded with \"" + response + "\"");
+      var response2 = bot.processMessage(message, user);
+  		if (response2 != null && shouldTalk) {
+  			channel.send(response2);
+  			return console.log("@" + slack.self.name + " responded with \"" + response2 + "\"");
   		} 
 
 	} else {

@@ -5,13 +5,10 @@ var botMaster = "@nasrkargas";
 var shouldTalk = true;
 
 app.set('port', (process.env.PORT || 5000));
-
 app.use(express.static(__dirname + '/public'));
-
 app.get('/', function(request, response) {
     response.render('index.html');
 });
-
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
@@ -25,12 +22,12 @@ Slack = require('slack-client')
 token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i'
 autoReconnect = true;
 autoMark = true;
-slack = new Slack(token, autoReconnect, autoMark);
-var bot = new Bot();
+
+var bot = new Bot()
+slack = new Slack(token, autoReconnect, autoMark)
 
 slack.on('open', function() {
   console.log('alive');
-
 });
 
 slack.on('message', function(message) {

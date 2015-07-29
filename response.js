@@ -5,13 +5,15 @@ var NasrResponder = require('./users/nasr_responses.js');
 
 Response = (function() {
 
-	Response.prototype.respondToMessage = function(message, userName) {
+	Response.prototype.respondToMessage = function(message, userName, userObject) {
 
 		console.log("respondToMessage() - " + message);
 
 		var text, response;
 		text = message.text.toLowerCase();
-
+    if(user.is_bot){
+      response = "Dont listen to " + user.name + " I think it's a bot!"
+    }
 		if (userName == "@sebastien.peek") {
 			sebResponder = new SebResponder();
 			response = sebResponder.respondToText(text);

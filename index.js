@@ -3,7 +3,6 @@ var express = require('express');
 var app = express();
 var botMaster = "@nasrkargas";
 var shouldTalk = true;
-var bot = Bot();
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -27,9 +26,11 @@ token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i'
 autoReconnect = true;
 autoMark = true;
 slack = new Slack(token, autoReconnect, autoMark);
+var bot = new Bot();
 
 slack.on('open', function() {
   console.log('alive');
+
 });
 
 slack.on('message', function(message) {
@@ -42,14 +43,10 @@ slack.on('message', function(message) {
 	user = slack.getUserByID(message.user);
 	type = message.type;
 	text = message.text.toString().toLowerCase();
-	ts = message.ts;
-  	channelName = (channel != null ? channel.is_channel : void 0) ? '#' : '';
-  	channelName = channelName + (channel ? channel.name : 'UNKNOWN_CHANNEL');
-  	userName = (user != null ? user.name : void 0) != null ? "@" + user.name : "UNKNOWN_USER";
-  	console.log("Received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
+  channelName = channelName + (channel ? channel.name : 'UNKNOWN_CHANNEL');
+  console.log("Received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
 
   	if (type === 'message' && (text != null) && (channel != null) && (slack.self.name != userName)) {
-
   		responder = new Responder();
   		var response = responder.respondToMessage(message, userName, user, botMaster);
       var response2 = bot.processMessage(message, user);

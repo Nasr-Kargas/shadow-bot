@@ -1,4 +1,5 @@
-function Bot () {
+var Bot;
+Bot = (function Bot () {
     this.shouldTalk = false
     this.botName = "ralf"
     this.botCommandOne = this.botName + " please"
@@ -8,4 +9,4 @@ function Bot () {
 
 Bot.prototype.processMessage = function(message, user){
 	return message;
-}
+});

@@ -20,10 +20,10 @@ Responder = require('./response.js')
 Bot = require('./bot.js')
 Slack = require('slack-client')
 token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i'
-autoReconnect = true;
-autoMark = true;
+autoReconnect = true
+autoMark = true
 
-var bot = new Bot()
+bot = new Bot()
 slack = new Slack(token, autoReconnect, autoMark)
 
 slack.on('open', function() {

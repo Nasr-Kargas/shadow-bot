@@ -10,8 +10,10 @@ var BotBrain = (function(botName, slackSelf) {
 
 	var wikipediaHTMLResult = function(data) {
 		console.log("WIKILOOKUP");
-	    var readData = $('<div>' + data.parse.text + '</div>');
+		console.log(data);
+	    var readData = $('<div>' + data.parse.text.* + '</div>');
 	    // handle redirects
+	    console.log("readdata" + readData);
 	    var redirect = readData.find('li:contains("REDIRECT") a').text();
 	    if(redirect != '') {
 	    	callWikipediaAPI(redirect);

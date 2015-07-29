@@ -1,12 +1,12 @@
-var Bot;
-Bot = (function Bot () {
+var RalfBot;
+RalfBot = (function RalfBot () {
     this.shouldTalk = false
     this.botName = "ralf"
     this.botCommandOne = this.botName + " please"
     this.botCommandTwo = this.botName
     this.processMessage = processMessage
 
-    Bot.prototype.processMessage = function(message, user){
+    RalfBot.prototype.processMessage = function(message, user){
 		return message
 	}
 })

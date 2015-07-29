@@ -30,23 +30,23 @@ var RalfBot = (function() {
 		return commandText.replace(commandPhrase,"");
 	};
 
-	RalfBot.prototype.processCommand = function(commandText){
+	RalfBot.prototype.processCommand = function(cmdTxt){
 		var command;
 		var responseText;
-		if (~text.indexOf("turn off") || ~text.indexOf("die") || ~text.indexOf("fuck off") || ~text.indexOf("go away") || ~text.indexOf("sleep")){
+		if (~cmdTxt.indexOf("turn off") || ~cmdTxt.indexOf("die") || ~cmdTxt.indexOf("fuck off") || ~cmdTxt.indexOf("go away") || ~cmdTxt.indexOf("sleep")){
 			//ask confirmation.
 			command = "turnoff";
-		}else if(~text.indexOf("turn on") || ~text.indexOf("come back") || ~text.indexOf("where are you") || ~text.indexOf("activate")){
+		}else if(~cmdTxt.indexOf("turn on") || ~cmdTxt.indexOf("come back") || ~cmdTxt.indexOf("where are you") || ~cmdTxt.indexOf("activate")){
 			if(this.botState == "sleeping"){
 				command = "turnon";
 			}else{
 				responseText = "I am already on!";
 			}
-		}else if(~text.indexOf("is")){
-			if(~text.indexOf("time")){
+		}else if(~cmdTxt.indexOf("is")){
+			if(~cmdTxt.indexOf("time")){
 				command = "tellTime";	
-			}else if(~text.indexOf("name")){
-				if(~text.indexOf("my")){
+			}else if(~cmdTxt.indexOf("name")){
+				if(~cmdTxt.indexOf("my")){
 					command = "myName";
 				}else{
 					command = "ralphName";

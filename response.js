@@ -11,8 +11,8 @@ Response = (function() {
 
 		var text, response;
 		text = message.text.toLowerCase();
-    if(user.is_bot){
-      response = "Dont listen to " + user.name + " I think it's a bot!"
+    if(userObject.is_bot){
+      response = "Dont listen to " + userObject.name + " I think it's a bot!"
     }
 		if (userName == "@sebastien.peek") {
 			sebResponder = new SebResponder();

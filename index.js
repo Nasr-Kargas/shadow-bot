@@ -20,47 +20,16 @@ app.listen(app.get('port'), function() {
 
 // Slack Bot about to start.
 var Slack, autoMark, autoReconnect, slack, token, Responder;
-Responder = require('./response.js');
-Slack = require('slack-client');
-token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i';
+Responder = require('./response.js')
+Bot = require('./bot.js')
+Slack = require('slack-client')
+token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i'
 autoReconnect = true;
 autoMark = true;
 slack = new Slack(token, autoReconnect, autoMark);
 
 slack.on('open', function() {
-  var channel, channels, group, groups, id, messages, unreads;
-  channels = [];
-  groups = [];
-  unreads = slack.getUnreadCount();
-  channels = (function() {
-    var _ref, _results;
-    _ref = slack.channels;
-    _results = [];
-    for (id in _ref) {
-      channel = _ref[id];
-      if (channel.is_member) {
-        _results.push("#" + channel.name);
-      }
-    }
-    return _results;
-  })();
-  groups = (function() {
-    var _ref, _results;
-    _ref = slack.groups;
-    _results = [];
-    for (id in _ref) {
-      group = _ref[id];
-      if (group.is_open && !group.is_archived) {
-        _results.push(group.name);
-      }
-    }
-    return _results;
-  })();
-  console.log("Welcome to Slack. You are @" + slack.self.name + " of " + slack.team.name);
-  console.log('You are in: ' + channels.join(', '));
-  console.log('As well as: ' + groups.join(', '));
-  messages = unreads === 1 ? 'message' : 'messages';
-  return console.log("You have " + unreads + " unread " + messages);
+  console.log('alive');
 });
 
 slack.on('message', function(message) {

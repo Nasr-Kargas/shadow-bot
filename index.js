@@ -81,7 +81,7 @@ slack.on('message', function(message) {
   	if (type === 'message' && (text != null) && (channel != null) && (slack.self.name != userName)) {
 
   		responder = new Responder();
-  		var response = responder.respondToMessage(message, userName, user);
+  		var response = responder.respondToMessage(message, userName, user, botMaster);
 
   		if (response != null && shouldTalk) {
   			channel.send(response);

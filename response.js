@@ -5,7 +5,7 @@ var NasrResponder = require('./users/nasr_responses.js');
 
 Response = (function() {
 
-	Response.prototype.respondToMessage = function(message, userName, userObject) {
+	Response.prototype.respondToMessage = function(message, userName, userObject, botMaster) {
 
 		console.log("respondToMessage() - " + message);
 

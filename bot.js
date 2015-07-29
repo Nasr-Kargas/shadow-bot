@@ -52,7 +52,9 @@ var RalfBot = (function(slackself) {
 				}else{
 					command = "ralphName";
 				}
-			}
+			} if(~cmdTxt.indexOf("what")){
+				command = "wikiLookup"
+			}	
 		}
 		
 		if(responseText){

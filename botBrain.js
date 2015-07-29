@@ -1,4 +1,5 @@
 var BotBrain = (function(botName, slackSelf) {
+	var express = require('jquery');
 	this.botState = "listening";
 	this.botName = botName;
 	this.slackSelf = slackSelf;

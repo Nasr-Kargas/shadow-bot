@@ -28,7 +28,7 @@ var BotBrain = (function(botName, slackSelf) {
 	        imageURL        = box.find('img').first().attr('src');
 	    }
 	    
-	    return fishName;
+	    return "it is "fishName + " " + imageURL + " " + binomialName;
 	};
 
 	function callWikipediaAPI(wikipediaPage) {

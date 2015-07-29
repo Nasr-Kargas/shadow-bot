@@ -1,7 +1,7 @@
 var BotBrain = (function(botName, slackSelf) {
 	var jsdom = require("jsdom"); 
 	var $ = require("jquery")(jsdom.jsdom().parentWindow); 
-	
+
 	this.botState = "listening";
 	this.botName = botName;
 	this.slackSelf = slackSelf;
@@ -49,7 +49,7 @@ var BotBrain = (function(botName, slackSelf) {
 		if(this.botTalkingTo != null){
 			return "Your name is " + this.botTalkingTo;
 		}else{
-			return "sorry I can remember your name.";
+			return "sorry I can't remember your name.";
 		}
 	}
 
@@ -58,7 +58,7 @@ var BotBrain = (function(botName, slackSelf) {
 			return "I'm already awake";
 		}else{
 			this.botState = "listening"
-			return "You summond me";
+			return "You summond me?";
 		}
 	}
 

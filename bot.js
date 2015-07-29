@@ -38,10 +38,10 @@ var RalfBot = (function(slackself) {
 		
 		if (~cmdTxt.indexOf("turn off") || ~cmdTxt.indexOf("die") || ~cmdTxt.indexOf("fuck off") || ~cmdTxt.indexOf("go away") || ~cmdTxt.indexOf("sleep")){
 			//ask confirmation.
-			command = "turnoff";
-		}else if(~cmdTxt.indexOf("turn on") || ~cmdTxt.indexOf("come back") || ~cmdTxt.indexOf("where are you") || ~cmdTxt.indexOf("activate")){
+			command = "turnOff";
+		}else if(~cmdTxt.indexOf("turn on") || ~cmdTxt.indexOf("come back") || ~cmdTxt.indexOf("where are you") || ~cmdTxt.indexOf("activate") || ~cmdTxt.indexOf("sleep")){
 			if(this.botState == "sleeping"){
-				command = "turnon";
+				command = "turnOn";
 			}
 		}else if(~cmdTxt.indexOf("is") || ~cmdTxt.indexOf("know")){
 			if(~cmdTxt.indexOf("time")){

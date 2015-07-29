@@ -44,10 +44,8 @@ slack.on('message', function(message) {
   console.log("Received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
 
   	if (type === 'message' && (text != null) && (channel != null) && (slack.self.name != userName)) {
-  		responder = new Responder();
-  		var response = responder.respondToMessage(message, userName, user, botMaster);
       var response2 = bot.processMessage(message, user);
-  		if (response2 != null && shouldTalk) {
+  		if (response2 != null) {
   			channel.send(response2);
   			return console.log("@" + slack.self.name + " responded with \"" + response2 + "\"");
   		} 

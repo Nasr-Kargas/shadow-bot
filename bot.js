@@ -4,8 +4,8 @@ var RalfBot = (function() {
     this.botCommandOne = this.botName + " please";
     this.botCommandTwo = this.botName;
     this.botCommandPhrases = [this.botCommandOne, this.botCommandTwo];
-    this.botState = "listening"
-	
+    this.botState = "listening";
+
 	RalfBot.prototype.processMessage = function(message, user){
 		console.dir(message);
 		commandText = message.text.toLowerCase().trim();
@@ -57,12 +57,12 @@ var RalfBot = (function() {
 		if(responseText){
 			return responseText;
 		}	
-		
+
 		return performCommand(command);
 	};
 
 	RalfBot.prototype.performCommand = function(command){
-
+		return command;
 	};
 
 });

@@ -1,5 +1,5 @@
 var BotBrain = (function(botName, slackSelf) {
-	var express = require('jquery');
+	var $ = require('jquery');
 	this.botState = "listening";
 	this.botName = botName;
 	this.slackSelf = slackSelf;
@@ -31,7 +31,7 @@ var BotBrain = (function(botName, slackSelf) {
 		// http://www.mediawiki.org/wiki/API:Parsing_wikitext#parse
 	    $.getJSON('http://en.wikipedia.org/w/api.php?action=parse&format=json&callback=?', {page:wikipediaPage, prop:'text|images', uselang:'en'}, wikipediaHTMLResult);
 	}
-
+  
 	this.tellTime = function(){
 		var time = new Date();
 		console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());

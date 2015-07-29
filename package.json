@@ -20,7 +20,8 @@
   "dependencies": {
     "express": "^4.13.1",
     "slack-client": "^1.4.1",
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "jsdom": "^1.0.0-pre.3"
   },
   "engines": {
     "node": "0.10.33"

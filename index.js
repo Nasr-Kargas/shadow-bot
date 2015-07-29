@@ -64,17 +64,19 @@ slack.on('message', function(message) {
 
 	var channel, channelError, channelName, errors, responder, text, textError, ts, type, typeError, user, userName;
 
+	console.log('slackMessage() - ' + message);
+
 	channel = slack.getChannelGroupOrDMByID(message.channel);
 	user = slack.getUserByID(message.user);
 	type = message.type;
-	text = message.text.toLowerCase();
+	text = message.text.toString().toLowerCase();
 	ts = message.ts;
   	channelName = (channel != null ? channel.is_channel : void 0) ? '#' : '';
   	channelName = channelName + (channel ? channel.name : 'UNKNOWN_CHANNEL');
   	userName = (user != null ? user.name : void 0) != null ? "@" + user.name : "UNKNOWN_USER";
   	console.log("Received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
 
-  	if (type === 'message' && (text != null) && (channel != null)) {
+  	if (type === 'message' && (text != null) && (channel != null) && (slack.self.name != userName)) {
 
   		responder = new Responder();
   		var response = responder.respondToMessage(message, userName);

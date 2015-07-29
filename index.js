@@ -1,6 +1,8 @@
 // Setting up litlte HTML sesh, just to show it is alive...
 var express = require('express');
 var app = express();
+var botMaster = "@nasr.kargas";
+var shouldTalk = true;
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -81,7 +83,7 @@ slack.on('message', function(message) {
   		responder = new Responder();
   		var response = responder.respondToMessage(message, userName, user);
 
-  		if (response != null) {
+  		if (response != null && shouldTalk) {
   			channel.send(response);
   			return console.log("@" + slack.self.name + " responded with \"" + response + "\"");
   		} 

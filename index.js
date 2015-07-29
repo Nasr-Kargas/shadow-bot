@@ -1,10 +1,13 @@
 // Setting up litlte HTML sesh, just to show it is alive...
 var express = require('express');
 var app = express();
-var bot = Bot();
+var botMaster = "@nasrkargas";
+var shouldTalk = true;
 
 app.set('port', (process.env.PORT || 5000));
+
 app.use(express.static(__dirname + '/public'));
+
 app.get('/', function(request, response) {
     response.render('index.html');
 });
@@ -70,16 +73,21 @@ slack.on('message', function(message) {
 	type = message.type;
 	text = message.text.toString().toLowerCase();
 	ts = message.ts;
-  channelName = (channel != null ? channel.is_channel : void 0) ? '#' : '';
-  channelName = channelName + (channel ? channel.name : 'UNKNOWN_CHANNEL');
-  userName = (user != null ? user.name : void 0) != null ? "@" + user.name : "UNKNOWN_USER";
-  console.log("Received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
+  	channelName = (channel != null ? channel.is_channel : void 0) ? '#' : '';
+  	channelName = channelName + (channel ? channel.name : 'UNKNOWN_CHANNEL');
+  	userName = (user != null ? user.name : void 0) != null ? "@" + user.name : "UNKNOWN_USER";
+  	console.log("Received: " + type + " " + channelName + " " + userName + " " + ts + " \"" + text + "\"");
 
-  if (type === 'message' && (text != null) && (channel != null) && (slack.self.name != userName)) {
-  		var response = bot.processMessage(message, user);
-  		if (response != null) {
+  	if (type === 'message' && (text != null) && (channel != null) && (slack.self.name != userName)) {
+
+  		responder = new Responder();
+  		var response = responder.respondToMessage(message, userName, user, botMaster);
+
+  		if (response != null && shouldTalk) {
   			channel.send(response);
+  			return console.log("@" + slack.self.name + " responded with \"" + response + "\"");
   		} 
+
 	} else {
     	typeError = type !== 'message' ? "unexpected type " + type + "." : null;
     	textError = text == null ? 'text was undefined.' : null;

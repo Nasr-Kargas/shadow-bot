@@ -1,10 +1,11 @@
+BotBrain = require('./botBrain.js');
+
 var RalfBot = (function() {
-    this.shouldTalk = false;
     this.botName = "ralf";
     this.botCommandOne = this.botName + " please";
     this.botCommandTwo = this.botName;
     this.botCommandPhrases = [this.botCommandOne, this.botCommandTwo];
-    this.botState = "listening";
+    this.brain = new BotBrain();
 
 	RalfBot.prototype.processMessage = function(message, user){
 		console.dir(message);
@@ -33,14 +34,13 @@ var RalfBot = (function() {
 	RalfBot.prototype.processCommand = function(cmdTxt){
 		var command;
 		var responseText;
+		
 		if (~cmdTxt.indexOf("turn off") || ~cmdTxt.indexOf("die") || ~cmdTxt.indexOf("fuck off") || ~cmdTxt.indexOf("go away") || ~cmdTxt.indexOf("sleep")){
 			//ask confirmation.
 			command = "turnoff";
 		}else if(~cmdTxt.indexOf("turn on") || ~cmdTxt.indexOf("come back") || ~cmdTxt.indexOf("where are you") || ~cmdTxt.indexOf("activate")){
 			if(this.botState == "sleeping"){
 				command = "turnon";
-			}else{
-				responseText = "I am already on!";
 			}
 		}else if(~cmdTxt.indexOf("is")){
 			if(~cmdTxt.indexOf("time")){
@@ -58,13 +58,8 @@ var RalfBot = (function() {
 			return responseText;
 		}	
 
-		return this.performCommand(command);
+		return this.brain.performCommand(command);
 	};
-
-	RalfBot.prototype.performCommand = function(command){
-		return command;
-	};
-
 });
 
 module.exports = RalfBot;

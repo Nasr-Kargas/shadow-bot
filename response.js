@@ -14,11 +14,18 @@ Response = (function() {
     if(userObject.is_bot){
       response = "Dont listen to " + userObject.name + " I think it's a bot!"
     }
-		if (userName == "@sebastien.peek") {
-			sebResponder = new SebResponder();
+		else if (userName == botMaster) {
+			sebResponder = new sebResponder();
 			response = sebResponder.respondToText(text);
   		}
-
+      if(text=="ralf off"){
+        response = "Ralf out!";
+        shouldTalk = false;
+      }
+      if(text=="ralf on"){
+        response = "Heyoooo!";
+        shouldTalk = true;
+      }
   		if (~text.indexOf("ahaha")) {
   			response = "what the fuck is so funny?";
   		}

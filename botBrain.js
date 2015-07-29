@@ -30,7 +30,7 @@ var BotBrain = (function(botName, slackSelf) {
 	        imageURL        = box.find('img').first().attr('src');
 	    }
 	    
-	    return "it is " + fishName + " " + imageURL + " " + binomialName;
+	    return "it is " + data.parse.text;
 	};
 
 	function callWikipediaAPI(wikipediaPage) {

@@ -1,10 +1,10 @@
-var RalfBot = (function() {
+var RalfBot = (function(slackself) {
 	var BotBrain = require('./botBrain.js');
     this.botName = "ralf";
     this.botCommandOne = this.botName + " please";
     this.botCommandTwo = this.botName;
     this.botCommandPhrases = [this.botCommandOne, this.botCommandTwo];
-    this.brain = new BotBrain();
+    this.brain = new BotBrain(this.botName, slackself);
 
 	RalfBot.prototype.processMessage = function(message, user){
 		console.dir(message);

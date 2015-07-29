@@ -1,6 +1,7 @@
-var BotBrain = (function(botName) {
+var BotBrain = (function(botName, slackSelf) {
 	this.botState = "listening";
 	this.botName = botName;
+	this.slackSelf = slackSelf;
 	this.botTalkingTo;
 
 	this.tellTime = function(){
@@ -10,7 +11,7 @@ var BotBrain = (function(botName) {
 	}
 
 	this.tellName = function(){
-		return "My name is " + botName;
+		return "My name is " + slackSelf.name +" but you can call me " + botName;
 	}
 
 	this.tellYourName = function(){

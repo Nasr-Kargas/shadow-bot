@@ -15,7 +15,7 @@ Response = (function() {
       response = "Dont listen to " + userObject.name + " I think it's a bot!"
     }
 		else if (userName == botMaster) {
-			sebResponder = new sebResponder();
+			sebResponder = new SebResponder();
 			response = sebResponder.respondToText(text);
   		}
       if(text=="ralf off"){

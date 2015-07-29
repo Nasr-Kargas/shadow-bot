@@ -23,7 +23,7 @@ token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i';
 autoReconnect = true;
 autoMark = true;
 
-bot = RalfBot;
+bot = new RalfBot();
 slack = new Slack(token, autoReconnect, autoMark);
 
 slack.on('open', function() {

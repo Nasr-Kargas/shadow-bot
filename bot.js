@@ -3,10 +3,10 @@ var RalfBot = (function() {
     this.botName = "ralf";
     this.botCommandOne = this.botName + " please";
     this.botCommandTwo = this.botName;
-    this.processMessage = processMessage;
 	
-	this.processMessage = function(message, user){
+	RalfBot.prototype.processMessage = function(message, user){
 		return message;
 	};
 });
 
+module.exports = RalfBot;

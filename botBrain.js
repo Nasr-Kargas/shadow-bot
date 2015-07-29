@@ -4,6 +4,33 @@ var BotBrain = (function(botName, slackSelf) {
 	this.slackSelf = slackSelf;
 	this.botTalkingTo;
 
+	var wikipediaHTMLResult = function(data) {
+	    var readData = $('<div>' + data.parse.text.* + '</div>');
+	    // handle redirects
+	    var redirect = readData.find('li:contains("REDIRECT") a').text();
+	    if(redirect != '') {
+	    	callWikipediaAPI(redirect);
+	        return;
+	    }
+	    
+	    var box = readData.find('.infobox');
+	    
+	    var binomialName    = box.find('.binomial').text();
+	    var fishName        = box.find('th').first().text();
+	    var imageURL        = null;
+	    // Check if page has images
+	    if(data.parse.images.length >= 1) {
+	        imageURL        = box.find('img').first().attr('src');
+	    }
+	    
+	    $('#insertTest').append('<div><img src="'+ imageURL + '"/>'+ fishName +' <i>('+ binomialName +')</i></div>');
+	};
+
+	function callWikipediaAPI(wikipediaPage) {
+		// http://www.mediawiki.org/wiki/API:Parsing_wikitext#parse
+	    $.getJSON('http://en.wikipedia.org/w/api.php?action=parse&format=json&callback=?', {page:wikipediaPage, prop:'text|images', uselang:'en'}, wikipediaHTMLResult);
+	}
+
 	this.tellTime = function(){
 		var time = new Date();
 		console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
@@ -51,6 +78,8 @@ var BotBrain = (function(botName, slackSelf) {
 			return this.tellName();
 		}else if(command == "turnOff"){
 			return this.turnOff
+		}else if(command == "wikiLookup"){
+			callWikipediaAPI('Thunder Cats');
 		}else{
 			return command;
 		}

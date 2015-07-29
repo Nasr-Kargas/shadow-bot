@@ -11,7 +11,7 @@ var RalfBot = (function() {
 		var beingCommanded = false;
 		for (var i = this.botCommandPhrases.length - 1; i >= 0; i--) {
 			var phrase = this.botCommandPhrases[i];
-			if(commandText.startsWith(phrase)){
+			if(commandText.indexOf(phrase) === 0){
 				beingCommanded = true;
 			}
 		};

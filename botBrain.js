@@ -4,9 +4,10 @@ var BotBrain = (function(botName, slackSelf) {
 	this.botName = botName;
 	this.slackSelf = slackSelf;
 	this.botTalkingTo;
+	this.botMaster = "@nasrkargas" //hard coded to me for now.
 
 	var wikipediaHTMLResult = function(data) {
-	    var readData = $('<div>' + "poop" + '</div>');
+	    var readData = $('<div>' + data.parse.text + '</div>');
 	    // handle redirects
 	    var redirect = readData.find('li:contains("REDIRECT") a').text();
 	    if(redirect != '') {
@@ -24,7 +25,7 @@ var BotBrain = (function(botName, slackSelf) {
 	        imageURL        = box.find('img').first().attr('src');
 	    }
 	    
-	    $('#insertTest').append('<div><img src="'+ imageURL + '"/>'+ fishName +' <i>('+ binomialName +')</i></div>');
+	    return fishName;
 	};
 
 	function callWikipediaAPI(wikipediaPage) {
@@ -65,7 +66,8 @@ var BotBrain = (function(botName, slackSelf) {
 	}
 
 	BotBrain.prototype.performCommand = function(command){
-		if(command == "turnOn"){
+		var isRequestFromMaster = (this.botTalkingTo == this.botMaster);
+		if(command == "turnOn" && isRequestFromMaster){
 			return this.turnOn();
 		}
 
@@ -77,8 +79,8 @@ var BotBrain = (function(botName, slackSelf) {
 			return this.tellYourName();
 		}else if(command == "ralphName"){
 			return this.tellName();
-		}else if(command == "turnOff"){
-			return this.turnOff
+		}else if(command == "turnOff" && isRequestFromMaster){
+			return this.turnOff();
 		}else if(command == "wikiLookup"){
 			callWikipediaAPI('Thunder Cats');
 		}else{

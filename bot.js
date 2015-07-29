@@ -1,6 +1,5 @@
-BotBrain = require('./botBrain.js');
-
 var RalfBot = (function() {
+	var BotBrain = require('./botBrain.js');
     this.botName = "ralf";
     this.botCommandOne = this.botName + " please";
     this.botCommandTwo = this.botName;
@@ -42,7 +41,7 @@ var RalfBot = (function() {
 			if(this.botState == "sleeping"){
 				command = "turnon";
 			}
-		}else if(~cmdTxt.indexOf("is")){
+		}else if(~cmdTxt.indexOf("is") || ~cmdTxt.indexOf("know")){
 			if(~cmdTxt.indexOf("time")){
 				command = "tellTime";	
 			}else if(~cmdTxt.indexOf("name")){

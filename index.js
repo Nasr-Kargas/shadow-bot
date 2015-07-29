@@ -19,7 +19,7 @@ app.listen(app.get('port'), function() {
 var Slack, autoMark, autoReconnect, slack, token, Responder;
 Responder = require('./response.js');
 Slack = require('slack-client');
-token = 'xoxb-8337261811-Gw2JlzA6VXhj4UNPLLwjdS6e';
+token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i';
 autoReconnect = true;
 autoMark = true;
 slack = new Slack(token, autoReconnect, autoMark);

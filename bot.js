@@ -21,7 +21,9 @@ var RalfBot = (function() {
 		}else{
 			//act on the first command
 			var firstCommand = this.scanCommands(commandText,phrase);
+			this.brain.botTalkingTo = user.name;
 			return this.processCommand(firstCommand);
+
 		}
 	};
 

@@ -5,7 +5,8 @@ var RalfBot = (function() {
     this.botCommandTwo = this.botName;
 	
 	RalfBot.prototype.processMessage = function(message, user){
-		return message;
+		console.dir(message);
+		return message.text;
 	};
 });
 

@@ -15,8 +15,7 @@ app.listen(app.get('port'), function() {
 
 
 // Slack Bot about to start.
-var Slack, autoMark, autoReconnect, slack, token, Responder;
-Responder = require('./response.js');
+var Slack, autoMark, autoReconnect, slack, token;
 RalfBot = require('./bot.js');
 Slack = require('slack-client');
 token = 'xoxb-8298166273-NFuOWpXMH2UYr8qT8IuzSq8i';
@@ -32,7 +31,7 @@ slack.on('open', function() {
 
 slack.on('message', function(message) {
 
-	var channel, channelError, channelName, errors, responder, text, textError, ts, type, typeError, user, userName;
+	var channel, channelError, channelName, errors, text, textError, ts, type, typeError, user, userName;
 
 	console.log('slackMessage() - ' + message);
 

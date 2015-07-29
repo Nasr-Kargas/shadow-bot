@@ -4,6 +4,7 @@ var RalfBot = (function() {
     this.botCommandOne = this.botName + " please";
     this.botCommandTwo = this.botName;
     this.botCommandPhrases = [this.botCommandOne, this.botCommandTwo];
+    this.botState = "listening"
 	
 	RalfBot.prototype.processMessage = function(message, user){
 		console.dir(message);
@@ -19,7 +20,7 @@ var RalfBot = (function() {
 			//assume we are not being talked to, maybe listen for phrases
 		}else{
 			//act on the first command
-			var firstCommand = this.scanCommands(commandText);
+			var firstCommand = this.scanCommands(commandText,phrase);
 			return this.processCommand(firstCommand);
 		}
 	};
@@ -30,7 +31,38 @@ var RalfBot = (function() {
 	};
 
 	RalfBot.prototype.processCommand = function(commandText){
-		return commandText;
+		var command;
+		var responseText;
+		if (~text.indexOf("turn off") || ~text.indexOf("die") || ~text.indexOf("fuck off") || ~text.indexOf("go away") || ~text.indexOf("sleep")){
+			//ask confirmation.
+			command = "turnoff";
+		}else if(~text.indexOf("turn on") || ~text.indexOf("come back") || ~text.indexOf("where are you") || ~text.indexOf("activate")){
+			if(this.botState == "sleeping"){
+				command = "turnon";
+			}else{
+				responseText = "I am already on!";
+			}
+		}else if(~text.indexOf("is")){
+			if(~text.indexOf("time")){
+				command = "tellTime";	
+			}else if(~text.indexOf("name")){
+				if(~text.indexOf("my")){
+					command = "myName";
+				}else{
+					command = "ralphName";
+				}
+			}
+		}
+		
+		if(responseText){
+			return responseText;
+		}	
+		
+		return performCommand(command);
+	};
+
+	RalfBot.prototype.performCommand = function(command){
+
 	};
 
 });

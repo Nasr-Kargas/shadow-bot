@@ -1,7 +1,7 @@
 // Setting up litlte HTML sesh, just to show it is alive...
 var express = require('express');
 var app = express();
-var botMaster = "@nasr.kargas";
+var botMaster = "@nasrkargas";
 var shouldTalk = true;
 
 app.set('port', (process.env.PORT || 5000));

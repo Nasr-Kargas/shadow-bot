@@ -58,7 +58,7 @@ var RalfBot = (function() {
 			return responseText;
 		}	
 
-		return performCommand(command);
+		return this.performCommand(command);
 	};
 
 	RalfBot.prototype.performCommand = function(command){

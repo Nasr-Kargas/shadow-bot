@@ -1,5 +1,5 @@
 var Response;
-
+var shouldRespond = true
 var SebResponder = require('./users/seb_responses.js');
 var NasrResponder = require('./users/nasr_responses.js');
 
@@ -18,14 +18,17 @@ Response = (function() {
 			sebResponder = new SebResponder();
 			response = sebResponder.respondToText(text);
   		}
+      var shouldTurnOff = false
       if(text=="ralf off"){
         response = "Ralf out!";
-        shouldTalk = false;
+        shouldTurnOff = true;
       }
       if(text=="ralf on"){
         response = "Heyoooo!";
-        shouldTalk = true;
+        shouldTurnOff = false;
+        shouldRespond = true;
       }
+
   		if (~text.indexOf("ahaha")) {
   			response = "what the fuck is so funny?";
   		}
@@ -44,7 +47,14 @@ Response = (function() {
 
   		if (response != null) {
   			var formattedResponse = "<@" + message.user + ">: " + response;
-  			return formattedResponse;
+        if(shouldTurnOff){
+          shouldRespond = false
+          return formattedResponse;
+        }else{
+          if(shouldRespond){
+            return formattedResponse;
+          }
+        }
   		};
 
 	};

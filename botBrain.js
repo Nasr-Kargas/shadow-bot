@@ -6,7 +6,7 @@ var BotBrain = (function(botName, slackSelf) {
 	this.botName = botName;
 	this.slackSelf = slackSelf;
 	this.botTalkingTo;
-	this.botMaster = "@nasrkargas" //hard coded to me for now.
+	this.botMaster = "@nasrkargas"; //hard coded to me for now.
 
 	var wikipediaHTMLResult = function(data) {
 	    var readData = $('<div>' + data.parse.text + '</div>');
@@ -68,7 +68,7 @@ var BotBrain = (function(botName, slackSelf) {
 	}
 
 	BotBrain.prototype.performCommand = function(command){
-		var isRequestFromMaster = (this.botTalkingTo == this.botMaster);
+		var isRequestFromMaster = true; //(this.botTalkingTo == this.botMaster);
 		if(command == "turnOn" && isRequestFromMaster){
 			return this.turnOn();
 		}
